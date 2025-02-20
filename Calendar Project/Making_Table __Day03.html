@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025 Calendar</title>
+    <style>
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid white;
+            background-color: rgb(89, 108, 104);
+            color: white;
+            padding: 10px;
+        }
+        th {
+            background-color: rgb(91, 87, 87);
+        }
+        td:hover {
+            color: black;
+            background-color: rgb(202, 60, 60);
+        }
+    </style>
+</head>
+<body>
+    <div style="text-align: center;">
+        <h1>2025 Calendar</h1>
+        
+        <script>
+            function generateCalendar(month, year, startDay, daysInMonth) {
+                let table = '<table align="center">';
+                table += `<tr><th colspan="7">${month}, ${year}</th></tr>`;
+                table += '<tr><th>Sunday</th><th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th><th>Friday</th><th>Saturday</th></tr>';
+                
+                let day = 1;
+                for (let i = 0; i < 6; i++) {
+                    table += '<tr>';
+                    for (let j = 0; j < 7; j++) {
+                        if (i === 0 && j < startDay) {
+                            table += '<td></td>';
+                        } else if (day <= daysInMonth) {
+                            table += `<td>${day}</td>`;
+                            day++;
+                        } else {
+                            table += '<td></td>';
+                        }
+                    }
+                    table += '</tr>';
+                    if (day > daysInMonth) break;
+                }
+                table += '</table>';
+                document.write(table);
+            }
+            
+            const months = [
+                ["January", 31, 3], ["February", 28, 6], ["March", 31, 6], ["April", 30, 2],
+                ["May", 31, 4], ["June", 30, 7], ["July", 31, 2], ["August", 31, 5],
+                ["September", 30, 1], ["October", 31, 3], ["November", 30, 6], ["December", 31, 1]
+            ];
+            
+            months.forEach(m => generateCalendar(m[0], 2025, m[2], m[1]));
+        </script>
+    </div>
+</body>
+</html>
